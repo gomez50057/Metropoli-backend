@@ -36,5 +36,5 @@ htmlcov/
 .pytest_cache/
 
 # Archivos de estáticos y recolectados (Django collectstatic)
-staticfiles/
-media/
+# staticfiles/
+# media/
