@@ -66,6 +66,7 @@ MIDDLEWARE = [
 #     'http://localhost:3000',  # Reemplaza con la URL de tu frontend si es diferente
 # ]
 
+CSRF_TRUSTED_ORIGINS = ['https://web-production-5143.up.railway.app']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
