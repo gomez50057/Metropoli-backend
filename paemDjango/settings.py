@@ -32,6 +32,9 @@ DEBUG = True
 
 SECURE_SSL_REDIRECT = False
 
+# Habilita la protección contra ataques XSS en el navegador
+SECURE_BROWSER_XSS_FILTER = True
+
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(" ")
 
 
@@ -47,15 +50,14 @@ INSTALLED_APPS = [
     'forms',
     'auth_app',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    # solo para railway  
-    # 'cloudinary', 
-    # 'cloudinary_storage', 
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -156,21 +158,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-
-
-# Configuración de Cloudinary
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-#     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-#     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET')
-# }
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Configuración de Whitenoise para archivos estáticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
