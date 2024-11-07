@@ -30,7 +30,6 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = True
 # DEBUG = os.getenv("DEBUG", "False") == "True"
 
-
 SECURE_SSL_REDIRECT = False
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(" ")
@@ -62,13 +61,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',  # Reemplaza con la URL de tu frontend si es diferente
-# ]
-
 CSRF_TRUSTED_ORIGINS = [ 'https://web-production-25ee.up.railway.app', 'http://localhost', 'http://127.0.0.1' ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',  # Reemplaza con la URL de tu frontend si es diferente
+# ]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -116,6 +115,7 @@ DATABASES = {
         'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': os.getenv("DB_HOST"),
         'PORT': os.getenv("DB_PORT"),
+        'CONN_MAX_AGE': 60,  # Reutilizar conexiones durante 60 segundos
     }
 }
 
@@ -154,6 +154,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
