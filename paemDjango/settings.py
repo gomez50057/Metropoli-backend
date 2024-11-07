@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = [ 'https://web-production-25ee.up.railway.app', 'http://localhost', 'http://127.0.0.1' ]
+CSRF_TRUSTED_ORIGINS = [ 'https://web-production-25ee.up.railway.app', 'http://localhost', 'http://127.0.0.1' , 'http://localhost:3000' ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
