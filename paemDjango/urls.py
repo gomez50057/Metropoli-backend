@@ -6,7 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('forms.urls')),
-    path('auth/', include('auth_app.urls')),  
+    path('auth/', include('auth_app.urls')),
+    path('chat-forms/', include('chat_forms.urls')),
+
 ]
 
 # Para servir archivos media durante el desarrollo

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'forms',
     'auth_app',
+    'chat_forms',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
