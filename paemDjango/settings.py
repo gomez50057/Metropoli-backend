@@ -27,15 +27,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.getenv("DEBUG", "False") == "True"
+# DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+
 
 SECURE_SSL_REDIRECT = False
 
 # Habilita la protección contra ataques XSS en el navegador
 SECURE_BROWSER_XSS_FILTER = True
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(" ")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split()
 
 
 # Application definition
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'forms',
     'auth_app',
+    'pozmvm',
     'chat_forms',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
@@ -67,16 +69,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = [ 'https://web-production-25ee.up.railway.app', 'http://localhost', 'http://127.0.0.1' , 'http://localhost:3000' ]
+CSRF_TRUSTED_ORIGINS = [
+    "https://metropoli.hidalgo.gob.mx",
+    "https://www.metropoli.hidalgo.gob.mx",  # en caso de redirecciones
+]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://metropoli.hidalgo.gob.mx",
+]
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',  # Reemplaza con la URL de tu frontend si es diferente
-# ]
-
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
-
 
 ROOT_URLCONF = 'paemDjango.urls'
 

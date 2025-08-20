@@ -3,7 +3,7 @@ from .models import Acuerdo, Actualizacion
 
 @admin.register(Acuerdo)
 class AcuerdoAdmin(admin.ModelAdmin):
-    list_display = ('id_unico', 'comision', 'estatus', 'fecha_creacion')
+    list_display = ('id_unico', 'comision', 'estatus', 'descripcion_acuerdo','fecha_creacion')
     search_fields = ('id_unico', 'nombre', 'apellido_paterno', 'apellido_materno')
 
 @admin.register(Actualizacion)

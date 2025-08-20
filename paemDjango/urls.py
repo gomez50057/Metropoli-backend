@@ -8,6 +8,7 @@ urlpatterns = [
     path('api/', include('forms.urls')),
     path('auth/', include('auth_app.urls')),
     path('chat-forms/', include('chat_forms.urls')),
+    path('api/', include('pozmvm.urls')),
 
 ]
 

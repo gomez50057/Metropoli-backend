@@ -28,7 +28,7 @@ class AcuerdoCargaMasivaSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El valor de 'documentos' debe ser una URL válida en el directorio /acuerdos/.")
         return value
 
-    def validate_minuta(self, value):
-        if value and not value.startswith('/acuerdos/'):
-            raise serializers.ValidationError("El valor de 'minuta' debe ser una URL válida en el directorio /acuerdos/.")
-        return value
+    # def validate_minuta(self, value):
+    #     if value and not value.startswith('/listaAcuerdos/'):
+    #         raise serializers.ValidationError("El valor de 'minuta' debe ser una URL válida en el directorio /listaAcuerdos/.")
+    #     return value
