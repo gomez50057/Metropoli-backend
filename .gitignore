@@ -3,7 +3,7 @@ venv/
 env/
 
 # Archivos de entorno
-.env
+.env*
 
 # Archivos de configuración de Django
 __pycache__/
